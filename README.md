@@ -9,4 +9,4 @@
 * **И, конечно, JavaScript-ом!;**
 
 #Ссылка на GitHub Pages
-https://lexstronger.github.io/russian-travel/
+https://lexstronger.github.io/mesto/
