@@ -26,7 +26,7 @@
         </div>
         <button class="profile__add-button" type="button"></button>
       </section>
-      <section class="elements" aria-label="Подобрка фотографий пользователя">
+      <section class="elements" aria-label="Подборка фотографий пользователя">
         <article class="element">
           <img class="element__photo" src="./images/element-1.jpg" alt="Река, втекающая в море и проходящая в скалистом и зелёном каньоне">
           <div class="element__panel">
@@ -77,10 +77,10 @@
     <div class="popup">
       <div class="popup__container">
         <button class="popup__cross" type="button"></button>
-        <form action="submit" class="popup__form">
-          <h3 class="popup__heading">Редактировать профиль</h3>
-          <input class="popup__input popup__input_type-name" type="text" placeholder="Жак-Ив Кусто">
-          <input class="popup__input popup__input_type-description" type="text" placeholder="Исследователь океана">
+        <h3 class="popup__heading">Редактировать профиль</h3>
+        <form class="popup__form" name="form1">
+          <input class="popup__input popup__input_type_name" type="text" name="name" placeholder="Имя">
+          <input class="popup__input popup__input_type_description" type="text" name="description" placeholder="О себе">
           <button type="submit" class="popup__button">Сохранить</button>
         </form>
       </div>
