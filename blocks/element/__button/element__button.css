@@ -12,8 +12,3 @@
 .element__button:hover {
   filter: opacity(50%);
 }
-
-/* .element__button:active {
-  background-image: url(../../../images/black-heart.svg);
-  filter: opacity(100%);
-} */

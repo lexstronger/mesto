@@ -2,7 +2,7 @@
   width: 120px;
   height: 120px;
   border-radius: 120px;
-  object-fit: contain;
+  object-fit: cover;
   object-position: center center;
 }
 
