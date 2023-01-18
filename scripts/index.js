@@ -47,7 +47,7 @@ const initialCards = [
 
 // Создание карточек
 
-const cardsContainer = document.querySelector('.card__list');
+const cardsContainer = document.querySelector('.photo-grid__list');
 const cardTemplate = document.querySelector('.template-card').content.querySelector('.card__item');
 
 function createCard ({name, link}) {
