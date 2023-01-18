@@ -108,6 +108,11 @@ function clickInfoButton() {
   inputDescription.value = profileDescription.textContent;
 };
 
+function CloseCardButton() { 
+  newCardForm.reset(); 
+  cardPopup.classList.remove('popup_opened'); 
+} 
+
 // Подставление значений из профиля в попап
 function handleFormEditProfileSubmit(event) {
   event.preventDefault();
@@ -124,13 +129,13 @@ function submitNewCardForm(event) {
     link: inputLink.value
   })
   cardsContainer.prepend(newCard);  
-  closePopup(cardPopup); 
+  CloseCardButton(); 
 }
 
 infoOpenButton.addEventListener('click', clickInfoButton);
 closeInfoPopupButton.addEventListener('click', () => {closePopup(infoPopup)});
 formEditProfilePopup.addEventListener('submit', handleFormEditProfileSubmit);
 cardButton.addEventListener('click', () => {openPopup(cardPopup)});
-cardCloseButton.addEventListener('click', () => {closePopup(cardPopup)});
+cardCloseButton.addEventListener('click', CloseCardButton);
 newCardForm.addEventListener('submit', submitNewCardForm);
 imageCloseButton.addEventListener('click', () => {closePopup(imagePopup)});
