@@ -26,65 +26,54 @@
         </div>
         <button class="profile__add-button" type="button"></button>
       </section>
-      <section class="elements" aria-label="Подборка фотографий пользователя">
-        <article class="element">
-          <img class="element__photo" src="./images/element-1.jpg" alt="Река, втекающая в море и проходящая в скалистом и зелёном каньоне">
-          <div class="element__panel">
-            <h2 class="element__name">Исландия</h2>
-            <button class="element__button" type="button"></button>
-          </div>          
-        </article>
-        <article class="element">
-          <img class="element__photo" src="./images/element-2.jpg" alt="Большой стадион для бейсбола на фоне панорамы небоскрёбов и окрестностей города">
-          <div class="element__panel">
-            <h2 class="element__name">Лос-Анджелес</h2>
-            <button class="element__button" type="button"></button>
-          </div>          
-        </article>
-        <article class="element">
-          <img class="element__photo" src="./images/element-3.jpg" alt="Высокие горные массивы песочного цвета, разделённые между собой километрами">
-          <div class="element__panel">
-            <h2 class="element__name">Гранд Каньон</h2>
-            <button class="element__button" type="button"></button>
-          </div>          
-        </article>
-        <article class="element">
-          <img class="element__photo" src="./images/element-4.jpg" alt="Уютный район кирпичных малоэтажек, на заднем фоне которого виден густонаселённый район небоскрёбов ">
-          <div class="element__panel">
-            <h2 class="element__name">Нью-Йорк</h2>
-            <button class="element__button" type="button"></button>
-          </div>          
-        </article>
-        <article class="element">
-          <img class="element__photo" src="./images/element-5.jpg" alt="Путешественник, стоящий у берега огромного горного озера, который разделяет заснеженный горный массив и густой хвойный лес">
-          <div class="element__panel">
-            <h2 class="element__name">Канада</h2>
-            <button class="element__button" type="button"></button>
-          </div>          
-        </article>
-        <article class="element">
-          <img class="element__photo" src="./images/element-6.jpg" alt="Центральная площадь города с полукруглым величественным зданием Главного штаба, соединённое Триумфальной аркой">
-          <div class="element__panel">
-            <h2 class="element__name">Санкт-Петербург</h2>
-            <button class="element__button" type="button"></button>
-          </div>          
-        </article>
+      <section class="cards">
+        <ul class="card__list">
+          
+        </ul>
       </section>
+      <template class="template-card">
+        <li class="card__item">
+          <img class="card__image" src="" alt="">
+          <button class="card__trash" type="button"></button>
+          <div class="card__panel">
+            <h2 class="card__name"></h2>
+            <button class="card__like" type="button"></button>
+          </div>
+        </li>
+      </template>
     </main>
     <footer class="footer">
       <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
     </footer>
-    <div class="popup">
+    <div class="popup popup_type_edit">
       <div class="popup__container">
         <button class="popup__cross" type="button"></button>
         <h3 class="popup__heading">Редактировать профиль</h3>
         <form class="popup__form" name="form1">
-          <input class="popup__input popup__input_type_name" type="text" name="name" placeholder="Имя">
-          <input class="popup__input popup__input_type_description" type="text" name="description" placeholder="О себе">
+          <input class="popup__input popup__input_type_name" type="text" name="name" placeholder="Имя" required>
+          <input class="popup__input popup__input_type_description" type="text" name="description" placeholder="О себе" required>
           <button type="submit" class="popup__button">Сохранить</button>
         </form>
       </div>
     </div>  
+    <div class="popup popup_type_new-card">
+      <div class="popup__container">
+        <button class="popup__cross" type="button"></button>
+        <h3 class="popup__heading">Новое место</h3>
+        <form class="popup__form" name="form2">
+          <input class="popup__input popup__input_type_title" type="text" name="title" placeholder="Название" required>
+          <input class="popup__input popup__input_type_link" type="text" name="link" placeholder="Ссылка на картинку" required>
+          <button type="submit" class="popup__button">Создать</button>
+        </form>
+      </div>
+    </div>  
+    <div class="popup popup_type_image">
+      <figure class="popup__picture">
+        <button class="popup__cross" type="button"></button>
+        <img class="popup__image" src="" alt="">
+        <figcaption class="popup__title"></figcaption>
+      </figure>
+    </div>
   </div>  
   <script src="./scripts/index.js"></script>
 </body>
