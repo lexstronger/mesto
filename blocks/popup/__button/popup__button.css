@@ -4,7 +4,7 @@
   line-height: 22px;
   text-align: center;
   width: 100%;
-  margin: 48px auto 0;
+  margin: 13px auto 0;
   background: rgba(0, 0, 0, 1);
   color: rgba(255, 255, 255, 1);
   cursor: pointer;
@@ -17,9 +17,11 @@
   filter: opacity(80%);
 }
 
+
 @media screen and (max-width: 880px) {
   .popup__button {
-    margin-top: 46px;
+    margin-top: 16px;
+    margin-bottom: 15px;
     font-size: 14px;
     line-height: 17px;
     padding-bottom: 15px;

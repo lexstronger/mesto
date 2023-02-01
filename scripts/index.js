@@ -6,6 +6,7 @@ const profileName = document.querySelector('.profile__name');
 const profileDescription = document.querySelector('.profile__description');
 const inputName = formEditProfilePopup.querySelector('.popup__input_type_name');
 const inputDescription = formEditProfilePopup.querySelector('.popup__input_type_description');
+const popup = document.querySelector('.popup');
 // переменные для попапа создания новой карточки
 const cardPopup = document.querySelector('.popup_type_new-card');
 const newCardForm = cardPopup.querySelector('.popup__form');
@@ -48,10 +49,12 @@ const initialCards = [
 
 function openPopup(item) {
   item.classList.add('popup_opened');
+  document.addEventListener('keyup', escapePress);
 }
 
 function closePopup(item) {
   item.classList.remove('popup_opened');
+  document.removeEventListener('keyup', escapePress);
 }
 
 // Создание карточек
@@ -131,6 +134,14 @@ function submitNewCardForm(event) {
   cardsContainer.prepend(newCard);  
   CloseCardButton(); 
 }
+// функция для закрытия попапа по esc
+function escapePress(event) {
+  event.preventDefault();
+  if(event.key === 'Escape') {
+    const openedPopup = document.querySelector('.popup_opened');
+    closePopup(openedPopup);
+  }
+}
 
 infoOpenButton.addEventListener('click', clickInfoButton);
 closeInfoPopupButton.addEventListener('click', () => {closePopup(infoPopup)});
@@ -139,3 +150,8 @@ cardButton.addEventListener('click', () => {openPopup(cardPopup)});
 cardCloseButton.addEventListener('click', CloseCardButton);
 newCardForm.addEventListener('submit', submitNewCardForm);
 imageCloseButton.addEventListener('click', () => {closePopup(imagePopup)});
+// слушатель для закрытия попапа через клик по оверлею
+document.addEventListener('click', (evt) => {
+  if(evt.target.classList.contains('popup')) {
+    closePopup(evt.target);
+  }});
