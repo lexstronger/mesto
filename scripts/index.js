@@ -50,11 +50,13 @@ const initialCards = [
 function openPopup(item) {
   item.classList.add('popup_opened');
   document.addEventListener('keyup', escapePress);
+  document.addEventListener('click', closePopupClickOnOverlay);
 }
 
 function closePopup(item) {
   item.classList.remove('popup_opened');
   document.removeEventListener('keyup', escapePress);
+  document.removeEventListener('click', closePopupClickOnOverlay);
 }
 
 // Создание карточек
@@ -111,9 +113,9 @@ function clickInfoButton() {
   inputDescription.value = profileDescription.textContent;
 };
 
-function CloseCardButton() { 
+function CloseAddCardButton() { 
   newCardForm.reset(); 
-  cardPopup.classList.remove('popup_opened'); 
+  closePopup(cardPopup); 
 } 
 
 // Подставление значений из профиля в попап
@@ -132,7 +134,7 @@ function submitNewCardForm(event) {
     link: inputLink.value
   })
   cardsContainer.prepend(newCard);  
-  CloseCardButton(); 
+  CloseAddCardButton(); 
 }
 // функция для закрытия попапа по esc
 function escapePress(event) {
@@ -142,16 +144,17 @@ function escapePress(event) {
     closePopup(openedPopup);
   }
 }
+// функция для закрытия попапа через клик по оверлею
+function closePopupClickOnOverlay(evt) {
+  if(evt.target.classList.contains('popup')) {
+    closePopup(evt.target);
+}}
 
 infoOpenButton.addEventListener('click', clickInfoButton);
 closeInfoPopupButton.addEventListener('click', () => {closePopup(infoPopup)});
 formEditProfilePopup.addEventListener('submit', handleFormEditProfileSubmit);
 cardButton.addEventListener('click', () => {openPopup(cardPopup)});
-cardCloseButton.addEventListener('click', CloseCardButton);
+cardCloseButton.addEventListener('click', CloseAddCardButton);
 newCardForm.addEventListener('submit', submitNewCardForm);
 imageCloseButton.addEventListener('click', () => {closePopup(imagePopup)});
-// слушатель для закрытия попапа через клик по оверлею
-document.addEventListener('click', (evt) => {
-  if(evt.target.classList.contains('popup')) {
-    closePopup(evt.target);
-  }});
+
