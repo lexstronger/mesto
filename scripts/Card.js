@@ -1,4 +1,4 @@
-import {imagePopup, picturePopup, titlePopup, openPopup} from './index.js';
+import {imagePopup, picturePopup, titlePopup, openPopup} from './constants.js';
 class Card {
   constructor(card, template, imagePopup) {
     this._template = template;
@@ -20,6 +20,7 @@ class Card {
 
   _deleteCard() {
     this._element.remove();
+    this._element = null;
   }
 
   _likeCard() {

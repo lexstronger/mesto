@@ -60,13 +60,10 @@ class FormValidator {
   };
 // перебор форм из массива
   enableValidation() {
-    this._formList = Array.from(document.querySelectorAll(this._settings.formSelector));
-    this._formList.forEach((formElement) => {
-      formElement.addEventListener('submit', () => {
-        this._disabledButton();
-      });    
-      this._setEventListeners();    
-    });
+    this._formElement.addEventListener('submit', () => {
+      this._disabledButton();
+    });    
+    this._setEventListeners();    
   };
 }
 
