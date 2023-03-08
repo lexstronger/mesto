@@ -1,22 +1,14 @@
-import Card from "./components/Card.js";
-import FormValidator from "./components/FormValidator.js";
-import  Section  from "./components/Section.js";
-import UserInfo from "./components/UserInfo.js";
-import PopupWithImage from "./components/PopupWithImage.js";
-import PopupWithForm from "./components/PopupWithForm.js";
-import { initialCards } from "./constants.js";
+import Card from "../scripts/components/Card";
+import FormValidator from "../scripts/components/FormValidator.js";
+import  Section  from "../scripts/components/Section.js";
+import UserInfo from "../scripts/components/UserInfo.js";
+import PopupWithImage from "../scripts/components/PopupWithImage.js";
+import PopupWithForm from "../scripts/components/PopupWithForm.js";
+import { initialCards, settings, buttonOpenInfoProfile, formEditProfilePopup, inputName, inputDescription, newCardForm, cardButton } from "../scripts/utils/constants.js";
 
-import '../pages/index.css';
+import './index.css';
 
-const buttonOpenInfoProfile = document.querySelector('.profile__button');
-const infoPopup = document.querySelector('.popup_type_edit');
-const formEditProfilePopup = infoPopup.querySelector('.popup__form');
-const inputName = formEditProfilePopup.querySelector('.popup__input_type_name');
-const inputDescription = formEditProfilePopup.querySelector('.popup__input_type_description');
-// переменные для попапа создания новой карточки
-const cardPopup = document.querySelector('.popup_type_new-card');
-const newCardForm = cardPopup.querySelector('.popup__form');
-const cardButton = document.querySelector('.profile__add-button');
+
 
 // функция связывания класса Card для открытия попапа с картинкой 
 const handleCardClick = (name, link) => {
@@ -71,15 +63,6 @@ function handleCardFormSubmit(item) {
 }
 
 cardButton.addEventListener('click', () => {popupNewCard.open()})
-
-const settings = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__button',
-  inactiveButtonClass: 'popup__button_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__input-error_visible'
-};
 
 const validatorCard = new FormValidator(settings, newCardForm);
 const validatorProfile = new FormValidator(settings,formEditProfilePopup)
