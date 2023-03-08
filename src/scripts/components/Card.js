@@ -1,12 +1,11 @@
-import {imagePopup, picturePopup, titlePopup, openPopup} from './constants.js';
 class Card {
-  constructor(card, template, imagePopup) {
-    this._template = template;
+  constructor(card, handleCardClick, template) {
     this._name = card.name;
     this._link = card.link;
-    this._imagePopup = imagePopup;
-    this._openPopup = openPopup;
+    this._handleCardClick = handleCardClick;
+    this._template = template; 
   }
+  
 
   _getElementFromTemplate() {
     return document.querySelector(this._template).content.querySelector('.card__item').cloneNode(true);
@@ -27,12 +26,16 @@ class Card {
     this._element.querySelector('.card__like').classList.toggle('card__like_active');
   }
 
-  _openImage() {    
-    titlePopup.textContent = this._name;  
-    picturePopup.alt = this._name;
-    picturePopup.src = this._link; 
-    this._openPopup(imagePopup);
+  _openImage() {
+    this._handleCardClick(this._name, this._link);
   }
+
+  // _openImage() {    
+  //   titlePopup.textContent = this._name;  
+  //   picturePopup.alt = this._name;
+  //   picturePopup.src = this._link; 
+  //   this._openPopup(imagePopup);
+  // }
 
   getElement() {
     this._element = this._getElementFromTemplate();

@@ -25,14 +25,4 @@ const initialCards = [
   }
 ];
 
-const imagePopup = document.querySelector('.popup_type_image');
-const picturePopup = document.querySelector('.popup__image');
-const titlePopup = document.querySelector('.popup__title');
-
-function openPopup(item) {
-  item.classList.add('popup_opened');
-  document.addEventListener('keyup', escapePress);
-  document.addEventListener('click', closePopupClickOnOverlay);
-}
-
-export {initialCards, imagePopup, picturePopup, titlePopup, openPopup }
+export {initialCards}
