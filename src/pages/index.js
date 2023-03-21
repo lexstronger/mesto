@@ -1,10 +1,11 @@
-import Card from "../scripts/components/Card";
+import Card from "../scripts/components/Card.js";
 import FormValidator from "../scripts/components/FormValidator.js";
 import  Section  from "../scripts/components/Section.js";
 import UserInfo from "../scripts/components/UserInfo.js";
 import PopupWithImage from "../scripts/components/PopupWithImage.js";
 import PopupWithForm from "../scripts/components/PopupWithForm.js";
 import { initialCards, settings, buttonOpenInfoProfile, formEditProfilePopup, inputName, inputDescription, newCardForm, cardButton } from "../scripts/utils/constants.js";
+import Api from "../scripts/components/Api.js";
 
 import './index.css';
 
@@ -68,3 +69,10 @@ const validatorCard = new FormValidator(settings, newCardForm);
 const validatorProfile = new FormValidator(settings,formEditProfilePopup)
 validatorCard.enableValidation();
 validatorProfile.enableValidation();
+
+const api = new Api(
+  'https://mesto.nomoreparties.co/v1/cohort-61',
+  'ac5a8fa3-72da-4dfb-8b23-f9b7c9cea421',
+);
+
+Promise.all([api.getInitialCards(), api.getCurrentUser()])

@@ -13,6 +13,10 @@
   font-size: 14px;
 }
 
+.popup__input:first-of-type {
+  margin-top: 17px;
+}
+
 .popup__input::placeholder {
   color: rgba(196, 196, 196, 1);
   font-size: 14px;
