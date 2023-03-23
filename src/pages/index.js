@@ -9,8 +9,6 @@ import Api from "../scripts/components/Api.js";
 
 import './index.css';
 
-
-
 // функция связывания класса Card для открытия попапа с картинкой 
 const handleCardClick = (name, link) => {
   popupImage.open({name, link});
@@ -27,12 +25,10 @@ function createCard (title, image) {
 
 // создаем экземпляр класса Section для отрисовки начальных карточек
 const cardsContainer = new Section({
-  items: initialCards,
   renderer: (item) => {
     cardsContainer.addItem(createCard(item.name, item.link))
   }}, '.photo-grid__list');
 
-  cardsContainer.renderItems();
 
 const profileInfo = new UserInfo({
   profileNameSelector: '.profile__name',
@@ -75,4 +71,12 @@ const api = new Api(
   'ac5a8fa3-72da-4dfb-8b23-f9b7c9cea421',
 );
 
-Promise.all([api.getInitialCards(), api.getCurrentUser()])
+api.getInitialCards()
+.then((serverCards) => {
+  console.log(serverCards);
+cardsContainer.renderItems(serverCards);
+})
+.catch((err) => {
+  console.log(`Ошибка: ${err}`);
+});
+// Promise.all([api.getInitialCards(), api.getCurrentUser()])

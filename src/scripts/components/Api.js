@@ -20,6 +20,7 @@ class Api {
 
   getInitialCards() {
     return fetch(`${this._basePath}/cards`, {
+      method: 'GET',
       headers: this._getHeaders(),
     })
       .then(this._getJson);
@@ -27,6 +28,7 @@ class Api {
 
   getCurrentUser() {
     return fetch(`${this._basePath}/users/me`, {
+      method: 'GET',
       headers: this._getHeaders(),
     })
       .then(this._getJson);
