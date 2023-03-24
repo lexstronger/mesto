@@ -8,13 +8,15 @@ class UserInfo {
   getUserInfo() {
     return {
       name: this._profileName.textContent,
-      description: this._profileDescription.textContent
+      description: this._profileDescription.textContent,
+      avatar: this._profileAvatar.src
     }
   }
 
-  setUserInfo({name, description}) {
+  setUserInfo({name, description, avatar}) {
     this._profileName.textContent = name;
     this._profileDescription.textContent = description;
+    this._profileAvatar.src = avatar
   }
 
   getUserId() {

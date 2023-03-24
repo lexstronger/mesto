@@ -32,7 +32,8 @@ const cardsContainer = new Section({
 
 const profileInfo = new UserInfo({
   profileNameSelector: '.profile__name',
-  profileDescriptionSelector: '.profile__description'
+  profileDescriptionSelector: '.profile__description',
+  profileAvatarSelector: '.profile__avatar'
 });
 
 const popupInfo = new PopupWithForm('.popup_type_edit', handleInfoFormSubmit);
@@ -71,12 +72,30 @@ const api = new Api(
   'ac5a8fa3-72da-4dfb-8b23-f9b7c9cea421',
 );
 
-api.getInitialCards()
-.then((serverCards) => {
-  console.log(serverCards);
-cardsContainer.renderItems(serverCards);
+let userId;
+
+// api.getInitialCards()
+// .then((initialCards) => {
+// cardsContainer.renderItems(initialCards);
+// })
+// .catch((err) => {
+//   console.log(`Ошибка: ${err}`);
+// });
+
+// api.getCurrentUser()
+// .then((userData) => {
+// profileInfo.setUserInfo({name: userData.name, description: userData.description, avatar: userData.avatar});
+// userId = userData._id;
+// })
+// .catch((err) => {
+//   console.log(`Ошибка: ${err}`);
+// });
+Promise.all([api.getInitialCards(), api.getCurrentUser()])
+.then(([initialCards, userData]) => {
+  cardsContainer.renderItems(initialCards);
+  profileInfo.setUserInfo({name: userData.name, description: userData.description, avatar: userData.avatar});
+  userId = userData._id;
 })
 .catch((err) => {
   console.log(`Ошибка: ${err}`);
 });
-// Promise.all([api.getInitialCards(), api.getCurrentUser()])

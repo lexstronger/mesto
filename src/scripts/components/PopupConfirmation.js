@@ -3,7 +3,6 @@ class PopupConfirmation extends Popup {
   constructor(popupSelector) {
     super(popupSelector);
     this._formConfirm = this._popup.querySelector('.popup__form');
-    this._buttonConfirm = this._popup.querySelector('popup__button')
   }
 
   changeHandleFormSubmit(action) {
@@ -16,14 +15,6 @@ class PopupConfirmation extends Popup {
       evt.preventDefault();
       this._handleSubmit();
     })
-  }
-
-  renderLoading(isLoading) {
-    if(isLoading) {
-      this._buttonConfirm.textContent = 'Удаление...';
-    } else {
-      this._buttonConfirm.textContent = 'Да';
-    }
   }
 }
 
