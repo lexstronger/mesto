@@ -58,10 +58,7 @@ class FormValidator {
   });
   };
 // перебор форм из массива
-  enableValidation() {
-    this._formElement.addEventListener('submit', () => {
-      this._disabledButton();
-    });    
+  enableValidation() { 
     this._setEventListeners();    
   };
 }

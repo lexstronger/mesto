@@ -35,7 +35,6 @@ class Card {
   }
 
   _addEventListeners() {
-    this._deleteButton.addEventListener('click', () => {this._cleanCardOfDeleteButton()});
     this._deleteButton.addEventListener('click', () => {this._handleRemoveTrashButton(this._cardId)});
     this._likeButton.addEventListener('click', () => {this._definesLikes()});
     this._cardImage.addEventListener('click', () => {this._openImage()});
@@ -54,10 +53,6 @@ class Card {
 
   _openImage() {
     this._handleCardClick(this._name, this._link);
-  }
-
-  _cleanCardOfDeleteButton() {
-    this._handleRemoveTrashButton(this._cardId);
   }
 
   _definesLikes() {

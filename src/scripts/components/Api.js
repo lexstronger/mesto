@@ -1,14 +1,7 @@
 class Api {
-  constructor(basePath, token) {
+  constructor({basePath, headers}) {
     this._basePath = basePath;
-    this._token = token;
-  }
-
-  _getHeaders() {
-    return {
-      "Content-Type": "application/json",
-      authorization: this._token,
-    };
+    this._headers = headers;
   }
 
   _getJson(res) {
@@ -18,77 +11,89 @@ class Api {
     return Promise.reject(`Ошибка: ${res.status}`);
   }
 
+  _request(url, options) {
+    return fetch(url, options).then(this._getJson)
+  }
+
   getInitialCards() {
-    return fetch(`${this._basePath}/cards`, {
-      headers: this._getHeaders(),
-    })
-      .then(this._getJson);
+    return this._request(
+      `${this._basePath}/cards`, {
+        headers: this._headers,
+      }
+    )
   }
 
   getCurrentUser() {
-    return fetch(`${this._basePath}/users/me`, {
-      headers: this._getHeaders(),
-    })
-      .then(this._getJson);
+    return this._request(
+      `${this._basePath}/users/me`, {
+        headers: this._headers,
+      }
+    )
   }
 
   editProfileInfo(data) {
-    return fetch(`${this._basePath}/users/me`, {
-      method: 'PATCH',
-      headers: this._getHeaders(),
-      body: JSON.stringify({
-        name: data.name,
-        about: data.description
-      })
-    })
-    .then(this._getJson);
+    return this._request(
+      `${this._basePath}/users/me`, {
+        method: "PATCH",
+        headers: this._headers,
+        body: JSON.stringify({
+          name: data.name,
+          about: data.description,
+        })
+      }
+    )
   }
 
   addNewCard(data) {
-    return fetch(`${this._basePath}/cards`, {
-      method: 'POST',
-      headers: this._getHeaders(),
-      body: JSON.stringify({
-        name: data.name,
-        link: data.link,
-      })
-    })
-    .then(this._getJson);
+    return this._request(
+      `${this._basePath}/cards`, {
+        method: "POST",
+        headers: this._headers,
+        body: JSON.stringify({
+          name: data.name,
+          link: data.link,
+        })
+      }
+    )
   }
 
   editProfileAvatar(data) {
-    return fetch(`${this._basePath}/users/me/avatar`, {
-      method: 'PATCH',
-      headers: this._getHeaders(),
-      body: JSON.stringify({
-        avatar: data.avatar
-      })
-    })
-    .then(this._getJson);
+    return this._request(
+      `${this._basePath}/users/me/avatar`, {
+        method: "PATCH",
+        headers: this._headers,
+        body: JSON.stringify({
+          avatar: data.avatar,
+        })
+      }
+    )
   }
 
   deleteCard(id) {
-    return fetch(`${this._basePath}/cards/${id}`, {
-      method: 'DELETE',
-      headers: this._getHeaders(),
-    })
-      .then(this._getJson);
+    return this._request(
+      `${this._basePath}/cards/${id}`, {
+        method: "DELETE",
+        headers: this._headers,
+      }
+    )
   }
 
   putLike(id) {
-    return fetch(`${this._basePath}/cards/${id}/likes`, {
-      method: 'PUT',
-      headers: this._getHeaders(),
-    })
-      .then(this._getJson);
+    return this._request(
+      `${this._basePath}/cards/${id}/likes`, {
+        method: "PUT",
+        headers: this._headers,
+      }
+    )
   }
 
   deleteLike(id) {
-    return fetch(`${this._basePath}/cards/${id}/likes`, {
-      method: 'DELETE',
-      headers: this._getHeaders(),
-    })
-      .then(this._getJson);
+    return this._request(
+      `${this._basePath}/cards/${id}/likes`, {
+        method: "DELETE",
+        headers: this._headers,
+      }
+    )
   }
 }
 

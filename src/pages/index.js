@@ -10,10 +10,13 @@ import {settings, buttonOpenInfoProfile, formEditProfilePopup, inputName, inputD
 
 import './index.css';
 
-const api = new Api(
-  'https://mesto.nomoreparties.co/v1/cohort-61',
-  'd0048b8d-b031-4f52-9b12-6a593e4f7ea8'
-);
+const api = new Api({
+  basePath: 'https://mesto.nomoreparties.co/v1/cohort-61',
+  headers: {
+    authorization: 'd0048b8d-b031-4f52-9b12-6a593e4f7ea8',
+    'Content-Type': 'application/json'
+  }
+});
 
 Promise.all([api.getInitialCards(), api.getCurrentUser()])
 .then(([initialCards, userData]) => {
@@ -90,7 +93,6 @@ const popupInfo = new PopupWithForm('.popup_type_edit', handleInfoFormSubmit);
 popupInfo.setEventListeners();
 
 function handleInfoFormSubmit(dataProfile) {
-  console.log(dataProfile);
   popupInfo.renderLoadingData(true);
   api.editProfileInfo(dataProfile)
   .then((dataProfile) => {
@@ -137,7 +139,6 @@ const popupNewCard = new PopupWithForm('.popup_type_new-card', handleCardFormSub
 popupNewCard.setEventListeners();
 
 function handleCardFormSubmit(dataCard) {
-  console.log(dataCard);
   popupNewCard.renderLoadingData(true);
   api.addNewCard(dataCard)
   .then(dataCard => {
