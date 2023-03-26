@@ -13,9 +13,9 @@ class UserInfo {
     }
   }
 
-  setUserInfo({name, description, avatar}) {
+  setUserInfo({name, about, avatar}) {
     this._profileName.textContent = name;
-    this._profileDescription.textContent = description;
+    this._profileDescription.textContent = about;
     this._profileAvatar.src = avatar
   }
 

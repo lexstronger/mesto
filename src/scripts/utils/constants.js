@@ -1,30 +1,3 @@
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
-
 const settings = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
@@ -43,5 +16,9 @@ const inputDescription = formEditProfilePopup.querySelector('.popup__input_type_
 const cardPopup = document.querySelector('.popup_type_new-card');
 const newCardForm = cardPopup.querySelector('.popup__form');
 const cardButton = document.querySelector('.profile__add-button');
+// переменные для попапа аватара
+const avatarPopup = document.querySelector('.popup_type_avatar');
+const formAvatar = avatarPopup.querySelector('.popup__form');
+const buttonAvatar = document.querySelector('.profile__avatar-btn')
 
-export {initialCards, settings, buttonOpenInfoProfile, formEditProfilePopup, inputName, inputDescription, newCardForm, cardButton}
+export {settings, buttonOpenInfoProfile, formEditProfilePopup, inputName, inputDescription, newCardForm, cardButton, formAvatar, buttonAvatar}

@@ -50,7 +50,7 @@ class Api {
       headers: this._getHeaders(),
       body: JSON.stringify({
         name: data.name,
-        link: data.link
+        link: data.link,
       })
     })
     .then(this._getJson);
