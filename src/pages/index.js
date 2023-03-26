@@ -85,13 +85,9 @@ const profileInfo = new UserInfo({
   profileAvatarSelector: '.profile__avatar'
 });
 
+// попап редактирования информации профиля
 const popupInfo = new PopupWithForm('.popup_type_edit', handleInfoFormSubmit);
 popupInfo.setEventListeners();
-// функция для изменения информации профиля
-// function handleInfoFormSubmit(data) {
-//   profileInfo.setUserInfo({name: data.name, description: data.description});
-//   popupInfo.close();
-// }
 
 function handleInfoFormSubmit(dataProfile) {
   console.log(dataProfile);
@@ -117,7 +113,7 @@ function handleAvatarFormSubmit(data) {
 popupAvatar.renderLoadingData(true);
 api.editProfileAvatar(data)
 .then((data) => {
-  profileInfo.setUserInfo({avatar: data.avatar});
+  profileInfo.setUserInfo(data);
   popupAvatar.close();
 })
 .catch((err) => {
