@@ -30,6 +30,7 @@ popupImage.setEventListeners();
 
 let userId;
 
+// создание карточки и ее функционала
 const createCard = (data) => {
   const card = new Card(data, userId,'.template-card',
     {handleCardClick: (name, link) => {
@@ -70,7 +71,6 @@ const createCard = (data) => {
 const cardObject = card.getElement();
 return cardObject;
 }
-
 
 // создаем экземпляр класса Section для отрисовки карточек
 const cardsContainer = new Section({
@@ -135,11 +135,6 @@ buttonOpenInfoProfile.addEventListener('click', () => {
 //попап создания новой карточки
 const popupNewCard = new PopupWithForm('.popup_type_new-card', handleCardFormSubmit);
 popupNewCard.setEventListeners();
-// функция создания карточки через попап
-// function handleCardFormSubmit(item) {
-//   const newCard = createCard(item.title, item.link);
-//   cardsContainer.addItem(newCard);
-// }
 
 function handleCardFormSubmit(dataCard) {
   console.log(dataCard);
@@ -157,20 +152,8 @@ function handleCardFormSubmit(dataCard) {
   })
 }
 
-const popupConfirmation = new PopupConfirmation('.popup_type_confirm', handleConfirmFormSubmit);
-
-function handleConfirmFormSubmit(cardId) {
-  popupConfirmation.changeHandleFormSubmit(() => {
-    api.deleteCard(cardId)
-    .then(() => {
-      popupConfirmation.cardId.remove();
-      popupConfirmation.close();
-    })
-    .catch((err) => {
-      console.log(`Ошибка: ${err}`);
-    })
-  })
-}
+const popupConfirmation = new PopupConfirmation('.popup_type_confirm');
+popupConfirmation.setEventListeners();
 
 cardButton.addEventListener('click', () => {popupNewCard.open()});
 buttonAvatar.addEventListener('click', () => {popupAvatar.open()});
