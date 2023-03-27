@@ -57,7 +57,14 @@ class FormValidator {
     return !inputElement.validity.valid;
   });
   };
-// перебор форм из массива
+  //очистка инпутов от ошибок и управление кнопкой сабмита
+  resetValidation() {
+    this._toggleButtonState();
+    this._inputList.forEach((inputElement) => {
+      this._hideInputError(inputElement);
+    })
+  }
+// валидация инпутов
   enableValidation() { 
     this._setEventListeners();    
   };

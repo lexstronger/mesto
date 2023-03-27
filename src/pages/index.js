@@ -126,14 +126,6 @@ api.editProfileAvatar(data)
 })
 }
 
-// слушатель кнопки редактирования профиля с подставлением значений оттуда в попап
-buttonOpenInfoProfile.addEventListener('click', () => {
-  popupInfo.open();
-  const currentProfileInfo = profileInfo.getUserInfo();
-  inputName.value = currentProfileInfo.name;
-  inputDescription.value = currentProfileInfo.description;  
-})
-
 //попап создания новой карточки
 const popupNewCard = new PopupWithForm('.popup_type_new-card', handleCardFormSubmit);
 popupNewCard.setEventListeners();
@@ -156,8 +148,22 @@ function handleCardFormSubmit(dataCard) {
 const popupConfirmation = new PopupConfirmation('.popup_type_confirm');
 popupConfirmation.setEventListeners();
 
-cardButton.addEventListener('click', () => {popupNewCard.open()});
-buttonAvatar.addEventListener('click', () => {popupAvatar.open()});
+// слушатель кнопки редактирования профиля с подставлением значений оттуда в попап
+buttonOpenInfoProfile.addEventListener('click', () => {
+  popupInfo.open();
+  validatorProfile.resetValidation();
+  const currentProfileInfo = profileInfo.getUserInfo();
+  inputName.value = currentProfileInfo.name;
+  inputDescription.value = currentProfileInfo.description;  
+})
+cardButton.addEventListener('click', () => {
+  popupNewCard.open();
+  validatorCard.resetValidation();
+});
+buttonAvatar.addEventListener('click', () => {
+  popupAvatar.open();
+  validatorAvatar.resetValidation();
+});
 
 const validatorCard = new FormValidator(settings, newCardForm);
 const validatorProfile = new FormValidator(settings, formEditProfilePopup)
